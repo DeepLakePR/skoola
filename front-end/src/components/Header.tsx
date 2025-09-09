@@ -30,7 +30,7 @@ export default function Header() {
 
     return (
         <>
-            <div className="flex justify-between p-4 bg-sky-500">
+            <div className="flex justify-between py-4 px-8 bg-sky-500">
                 <Link href="/" className="w-32">
                     <Image src="/logo.png" width="64" height="64" alt="Logo Skoola" />
                 </Link>
