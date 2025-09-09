@@ -1,8 +1,8 @@
 {
   "name": "back-end",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "Projeto Skoola - TCC - 2025",
+  "author": "Guilherme Fortunato",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -21,17 +21,17 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
+    "@apollo/server": "4.7.0",
     "@nestjs/apollo": "^13.1.0",
     "@nestjs/common": "^11.0.1",
-    "@nestjs/core": "^11.0.1",
+    "@nestjs/core": "^11.1.6",
     "@nestjs/graphql": "^13.1.0",
     "@nestjs/mongoose": "^11.0.3",
     "@nestjs/platform-express": "^11.0.1",
-    "apollo-server-express": "^3.13.0",
     "bcrypt": "^6.0.0",
     "graphql": "^16.11.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.18.0",
+    "mongoose": "^8.18.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
   },
@@ -43,7 +43,7 @@
     "@nestjs/testing": "^11.0.1",
     "@types/express": "^5.0.0",
     "@types/jest": "^30.0.0",
-    "@types/node": "^22.10.7",
+    "@types/node": "^24.3.1",
     "@types/supertest": "^6.0.2",
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
