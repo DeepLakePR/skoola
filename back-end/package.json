@@ -27,7 +27,9 @@
     "@nestjs/mongoose": "^11.0.3",
     "@nestjs/platform-express": "^11.0.1",
     "apollo-server-express": "^3.13.0",
+    "bcrypt": "^6.0.0",
     "graphql": "^16.11.0",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.18.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"

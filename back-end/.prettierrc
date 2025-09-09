@@ -1,4 +1,6 @@
 {
+  "checkIgnorePragma": false,
+  "requirePragma": false,
   "singleQuote": false,
-  "trailingComma": "all"
+  "trailingComma": "none"
 }
