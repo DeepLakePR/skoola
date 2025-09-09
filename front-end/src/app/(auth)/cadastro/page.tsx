@@ -2,13 +2,13 @@
 
 import Background from "@/components/Background";
 import Logo from "@/components/Logo";
-import { Button, Input } from "antd";
+import { Button, Form, Input } from "antd";
 
 export default function Cadastro() {
     return <div className="p-4 flex h-full items-center justify-center">
         <Background />
 
-        <div className="p-4 bg-white rounded-3xl w-[85%] h-full flex flex-col items-center justify-center gap-3">
+        <Form className="p-4 bg-white rounded-3xl w-[85%] h-full flex flex-col items-center justify-center gap-3">
 
             <Logo imgWidth={200} imgHeight={200} className="mb-8" />
 
@@ -27,6 +27,6 @@ export default function Cadastro() {
                 Cadastrar-me
             </Button>
 
-        </div>
+        </Form>
     </div>
 }
