@@ -10,7 +10,7 @@ export interface LogoProps{
 export default function Logo({ imgWidth, imgHeight, className }: LogoProps) {
 
     return <Link href="/">
-        <Image src="/logo.png" className={className} width={imgWidth} height={imgHeight} alt="Logo Skoola" />
+        <Image src="/logo.png" className={className} width={imgWidth ?? 64} height={imgHeight ?? 64} alt="Logo Skoola" />
     </Link>
 
 }
