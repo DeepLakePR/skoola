@@ -1,4 +1,4 @@
-import { Resolver, Mutation, Args } from "@nestjs/graphql";
+import { Resolver, Mutation, Args, Query } from "@nestjs/graphql";
 import { CreateUserUseCase } from "../application/usecases/create-user.usecase";
 import { LoginUserUseCase } from "../application/usecases/login-user.usecase";
 import { UpdateUserNameUseCase } from "../application/usecases/update-user-name.usecase";
@@ -11,6 +11,11 @@ export class UserResolver {
         private readonly loginUser: LoginUserUseCase,
         private readonly updateUserName: UpdateUserNameUseCase,
     ) {}
+
+    @Query(() => String)
+    user(): string{
+        return "User";
+    }
 
     @Mutation(() => String)
     async register(

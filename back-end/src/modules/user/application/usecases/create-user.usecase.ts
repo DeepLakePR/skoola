@@ -1,7 +1,9 @@
 import * as bcrypt from "bcrypt";
 import { UserRepository } from "../../infrastructure/user.repository";
 import { User } from "../../domain/user.entity";
+import { Injectable } from "@nestjs/common";
 
+@Injectable()
 export class CreateUserUseCase {
 
     constructor(private repo: UserRepository){}

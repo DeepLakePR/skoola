@@ -3,12 +3,18 @@ import { GraphQLModule } from "@nestjs/graphql";
 import { MongooseModule } from "@nestjs/mongoose";
 import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
 import { join } from "path";
+import { ConfigModule } from "@nestjs/config";
 
 import { UserModule } from "./modules/user/user.module";
 
 @Module({
   imports: [
-    MongooseModule.forRoot("mongodb://localhost:27017/skoola_db"),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: ".env"
+    }),
+
+    MongooseModule.forRoot("mongodb+srv://guilhermeadmin:hpiYvP1LcLcrQ03x@cluster0.oagwx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"),
 
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
@@ -23,4 +29,6 @@ import { UserModule } from "./modules/user/user.module";
   providers: []
 })
 
-export class AppModule {}
+export class AppModule {
+
+}

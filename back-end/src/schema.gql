@@ -1,0 +1,13 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Mutation {
+  login(email: String!, password: String!): String!
+  register(email: String!, name: String!, password: String!): String!
+  updateName(name: String!, userId: String!): String!
+}
+
+type Query {
+  user: String!
+}

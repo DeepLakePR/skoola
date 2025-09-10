@@ -3,6 +3,7 @@ import { Document } from "mongoose";
 
 @Schema()
 export class UserModel extends Document {
+
     @Prop({ required: true })
     name: string;
 

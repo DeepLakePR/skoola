@@ -15,13 +15,16 @@ import { UserResolver } from "./interface/user.resolver";
         MongooseModule.forFeature([{ name: UserModel.name, schema: UserSchema }])
     ],
     providers: [
+        UserRepository,
+
         CreateUserUseCase,
         LoginUserUseCase,
         UpdateUserNameUseCase,
 
-        UserRepository,
-
         UserResolver
+    ],
+    exports: [
+        UserRepository
     ]
 })
 
