@@ -36,6 +36,8 @@ export default function Register() {
                 content: "Conta criada com sucesso, redirecionando para o login...",
             })
 
+            // result api antd
+
         } catch (err) {
             messageApi.open({
                 type: "error",

@@ -22,15 +22,15 @@ export default function Home() {
         </div>
 
         <div className="w-full py-3 bg-sky-500 flex items-center justify-center">
-          <Shortcut url={"/sports"} imageSrc={"/shortcut-1.png"} />
+          <Shortcut url={"/sports"} imageSrc={"/shortcuts/shortcut-1.png"} />
 
-          <Shortcut url={"/gov-parana"} imageSrc={"/shortcut-2.png"} />
+          <Shortcut url={"/gov-parana"} imageSrc={"/shortcuts/shortcut-2.png"} />
 
-          <Shortcut url={"/escola-cidade"} imageSrc={"/shortcut-3.png"} />
+          <Shortcut url={"/escola-cidade"} imageSrc={"/shortcuts/shortcut-3.png"} />
 
-          <Shortcut url={"/gremio"} imageSrc={"/shortcut-4.png"} />
+          <Shortcut url={"/gremio"} imageSrc={"/shortcuts/shortcut-4.png"} />
 
-          <Shortcut url={"/perfil"} imageSrc={"/shortcut-5.png"} />
+          <Shortcut url={"/perfil"} imageSrc={"/shortcuts/shortcut-5.png"} />
         </div>
 
         <div className="p-6 text-center">

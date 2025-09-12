@@ -13,6 +13,7 @@ import {
 import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
 
@@ -31,38 +32,38 @@ export default function Header() {
     return (
         <>
             <div className="flex justify-between py-4 px-8 bg-sky-500">
-                <Link href="/" className="w-32">
-                    <Image src="/logo.png" width="64" height="64" alt="Logo Skoola" />
+                <Link href="/" className="items-center justify-center flex">
+                    <Image src="/logo.png" width={72} height={72} alt="Logo Skoola" />
                 </Link>
 
                 <Menu
                     className="w-full flex justify-end-safe bg-transparent!"
-                    defaultSelectedKeys={["1"]}
+                    defaultSelectedKeys={[usePathname().replace("/", "")]}
                     mode="horizontal"
                     theme="dark"
                     items={[
                         {
                             label: (<Link href="/">Home</Link>),
-                            key: "1",
+                            key: "",
                             style: { borderRadius: 6 },
                             icon: <HomeOutlined />,
 
                         },
                         {
-                            label: (<Link href="/mensagens">Mensagens</Link>),
-                            key: "2",
-                            style: { borderRadius: 6 },
-                            icon: <MessageOutlined />,
-                        },
-                        {
                             label: (<Link href="/perfil">Perfil</Link>),
-                            key: "3",
+                            key: "perfil",
                             style: { borderRadius: 6 },
                             icon: <UserOutlined />,
                         },
                         {
+                            label: (<Link href="/mensagens">Mensagens</Link>),
+                            key: "mensagens",
+                            style: { borderRadius: 6 },
+                            icon: <MessageOutlined />,
+                        },
+                        {
                             label: (<Link href="/mais">Mais</Link>),
-                            key: "4",
+                            key: "mais",
                             style: { borderRadius: 6 },
                             icon: <PlusOutlined />,
                         },
