@@ -3,7 +3,8 @@
 import { registerUser } from "@/api/userAPI";
 import Background from "@/components/Background";
 import Logo from "@/components/Logo";
-import { Button, Form, Input, message } from "antd";
+import { Button, Form, Input, message, Result } from "antd";
+import Link from "next/link";
 import { useState } from "react";
 
 interface FormValues {
@@ -15,31 +16,30 @@ interface FormValues {
 
 export default function Register() {
 
-    const [ messageApi, contextHolder ] = message.useMessage();
+    const [messageApi, contextHolder] = message.useMessage();
 
     const [loading, setLoading] = useState<boolean>(false);
+    const [successOnRegister, setSuccessOnRegister] = useState<boolean>(false);
 
     async function sendForm(values: FormValues) {
 
-        setLoading(true);
-        if(values.email !== values.repeatEmail){
+        if (values.email !== values.repeatEmail) {
             messageApi.open({
                 type: "error",
-                content: "Repita o e-mail corretamente.",
-            })
+                content: "Repita o e-mail corretamente."
+            });
+            return
+
         }
+
+        setLoading(true);
 
         try {
             await registerUser(values.name, values.email, values.password);
-            messageApi.open({
-                type: "success",
-                content: "Conta criada com sucesso, redirecionando para o login...",
-            })
-
-            // result api antd
+            setSuccessOnRegister(true);
 
         } catch (err) {
-            messageApi.open({
+            message.open({
                 type: "error",
                 content: "Erro ao se cadastrar, tente novamente mais tarde.",
             })
@@ -48,6 +48,24 @@ export default function Register() {
         } finally {
             setLoading(false);
         }
+
+    }
+
+    if (successOnRegister) {
+        return <div className="h-full flex items-center justify-center">
+            <Result
+                status="success"
+                title="Conta Criada com Sucesso!"
+                subTitle="Seu cadastro foi concluído com sucesso e você já pode acessar sua conta."
+                extra={[
+                    <Button type="primary" key="profile">
+                        <Link href="/perfil">
+                            Ir Para o Login
+                        </Link>
+                    </Button>
+                ]}
+            />
+        </div>
 
     }
 
@@ -64,19 +82,23 @@ export default function Register() {
 
             <div className="flex flex-col w-80">
 
-                <Form.Item name="name" required={true} className="mb-2!">
+                <Form.Item name="name" rules={[{ required: true, message: "Informe o nome" }]}
+                    className="mb-2!">
                     <Input placeholder="Nome" about="Coloque seu nome" />
                 </Form.Item>
 
-                <Form.Item name="email" required={true} className="mb-2!">
+                <Form.Item name="email" rules={[{ required: true, message: "Informe o e-mail" }, { type: "email", message: "E-mail inválido" }]}
+                    className="mb-2!">
                     <Input placeholder="E-mail" about="Coloque seu e-mail" />
                 </Form.Item>
 
-                <Form.Item name="repeatEmail" required={true} className="mb-2!">
+                <Form.Item name="repeatEmail" rules={[{ required: true, message: "Repita o e-mail" }]}
+                    className="mb-2!">
                     <Input placeholder="Repita seu e-mail" about="Repita seu e-mail" />
                 </Form.Item>
 
-                <Form.Item name="password" required={true} className="mb-2!">
+                <Form.Item name="password" rules={[{ required: true, message: "Informe sua senha" }]}
+                    className="mb-2!">
                     <Input.Password placeholder="Senha" about="Coloque sua senha" />
                 </Form.Item>
             </div>

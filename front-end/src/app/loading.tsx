@@ -1,36 +1,40 @@
 "use client";
+
 import { useEffect, useState } from "react";
 
-interface Props {
-    show: boolean;
-}
+export default function Loading() {
 
-export default function Loading({ show }: Props) {
 
-    const [visible, setVisible] = useState(show);
-    const [zIndex, setZIndex] = useState(99999);
+    const [visible, setVisible] = useState(true);
+    const [showLoading, setShowLoading] = useState(true);
+    const [zIndex, setZIndex] = useState(9999999999999);
 
     useEffect(() => {
 
-        if (!show) {
+        setVisible(true);
+        setShowLoading(true);
 
-            const timeout = setTimeout(() => {
-                setVisible(false)
-                setZIndex(-1);
+        const t2 = setTimeout(() => {
+            setShowLoading(false);
 
-            }, 5500)
+        }, 5250);
 
-            return () => clearTimeout(timeout);
+        const timeout = setTimeout(() => {
+            setVisible(false)
+            setZIndex(-1);
 
-        }
-    }, [show])
+        }, 5750)
+
+        return () => {clearTimeout(timeout); clearTimeout(t2)};
+
+    }, [])
 
     if (!visible) return null;
 
     return (
         <div className={`
-            fixed inset-0 flex items-center justify-center bg-white transition-opacity duration-1500 h-full
-            ${show ? "opacity-100" : "opacity-0 z-0!"}
+            fixed inset-0 flex items-center justify-center bg-white transition-opacity duration-1250 h-full
+            ${showLoading ? "opacity-100" : "opacity-0 z-0!"}
             `} style={{ zIndex: zIndex }}>
 
             <video autoPlay muted className="w-full max-w-md h-full">
