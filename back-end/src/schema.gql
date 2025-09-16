@@ -3,11 +3,18 @@
 # ------------------------------------------------------
 
 type Mutation {
-  login(email: String!, password: String!): String!
+  login(email: String!, password: String!): UserLoginResponseDTO!
   register(email: String!, name: String!, password: String!): String!
   updateName(name: String!, userId: String!): String!
 }
 
 type Query {
   user: String!
+}
+
+type UserLoginResponseDTO {
+  email: String!
+  id: String!
+  name: String!
+  token: String!
 }

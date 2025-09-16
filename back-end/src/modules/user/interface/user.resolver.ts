@@ -2,6 +2,7 @@ import { Resolver, Mutation, Args, Query } from "@nestjs/graphql";
 import { CreateUserUseCase } from "../application/usecases/create-user.usecase";
 import { LoginUserUseCase } from "../application/usecases/login-user.usecase";
 import { UpdateUserNameUseCase } from "../application/usecases/update-user-name.usecase";
+import { UserLoginResponseDTO } from "./user.dto";
 
 @Resolver()
 export class UserResolver {
@@ -27,15 +28,20 @@ export class UserResolver {
         return `User ${user.email} created successfully`;
     }
 
-    @Mutation(() => String)
+    @Mutation(() => UserLoginResponseDTO)
     async login(
         @Args('email') email: string,
         @Args('password') password: string
-    ) {
-        const token = await this.loginUser.execute(email, password);
-        if (!token) throw new Error("Invalid credentials");
+    ): Promise<UserLoginResponseDTO> {
+        const result = await this.loginUser.execute(email, password);
+        if (!result) throw new Error("Invalid credentials");
         
-        return token;
+        return {
+            token: result.token,
+            id: result.user.id,
+            name: result.user.name,
+            email: result.user.email
+        };
     }
 
     @Mutation(() => String)
