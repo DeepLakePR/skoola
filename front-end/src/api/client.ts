@@ -1,7 +1,8 @@
 import { GraphQLClient } from "graphql-request";
 
+const APIUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3001/graphql"; 
 
-export const client = new GraphQLClient("http://localhost:3001/graphql", {
+export const client = new GraphQLClient(APIUrl, {
     headers: () => {
         
         let User: string | null = null;
