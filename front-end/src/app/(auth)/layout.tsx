@@ -10,8 +10,14 @@ export default function AuthLayout({
 
     const router = useRouter();
 
-    if(localStorage.getItem("token"))
-        return router.push("/perfil");
+
+    if (typeof window !== "undefined") {
+        const user = JSON.parse(localStorage.getItem("user") ?? "{}");
+
+        if (user.token)
+            return router.push("/perfil");
+
+    }
 
     return (
         <>

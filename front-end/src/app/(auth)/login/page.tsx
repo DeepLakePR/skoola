@@ -3,6 +3,7 @@
 import { loginUser } from "@/api/userAPI";
 import Background from "@/components/Background";
 import Logo from "@/components/Logo";
+import { IUser } from "@/interface/user.interface";
 import { Button, Input, Form, message } from "antd";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -25,9 +26,8 @@ export default function Login() {
         setLoading(true);
 
         try {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const tokenRes: any = await loginUser(values.email, values.password)
-            localStorage.setItem("token", tokenRes.login);
+            const res = await loginUser(values.email, values.password) as IUser
+            localStorage.setItem("user", JSON.stringify(res.login));
 
             messageApi.success("Logado com sucesso! Redirecionando para o seu perfil...");
             return router.push("/perfil")
