@@ -5,6 +5,7 @@ import Background from "@/components/Background";
 import Logo from "@/components/Logo";
 import { IUser } from "@/interface/user.interface";
 import { Button, Input, Form, message } from "antd";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -68,6 +69,8 @@ export default function Login() {
                 Entrar
             </Button>
 
-        </Form >
+            <p>Não tem uma conta? <Link href="/cadastro">Cadastre-se Aqui</Link></p>
+
+        </Form>
     </div >
 }

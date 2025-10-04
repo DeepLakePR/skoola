@@ -16,7 +16,7 @@ export default function ProfileStatic({ profilePhoto, profileName, profilePostDe
         <div className="w-full h-75 relative flex items-center justify-center">
             <Image className="absolute w-full h-full object-cover z-[-1] opacity-[0.6]" width="1000" height="1000" src="/banner.png" alt="Banner Skoola" />
 
-            <Image width="150" height="150" src={profilePhoto} alt="Perfil" />
+            <Image width="150" height="150" src={profilePhoto} alt="Perfil" className="rounded-full" />
         </div>
 
         <Button type="primary" shape="round" className="mt-6" size="large">
@@ -36,7 +36,7 @@ export default function ProfileStatic({ profilePhoto, profileName, profilePostDe
                         ]}
                     >
                         <Card.Meta
-                            avatar={<Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=1" />}
+                            avatar={<Avatar src={profilePhoto} />}
                             title="Postagem"
                             description={
                                 <p>

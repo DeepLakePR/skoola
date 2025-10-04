@@ -33,7 +33,7 @@ export default function Loading() {
 
     return (
         <div className={`
-            fixed inset-0 flex items-center justify-center bg-white transition-opacity duration-1250 h-full
+            fixed inset-0 flex items-center justify-center bg-[#fefefe] transition-opacity duration-1250 h-full
             ${showLoading ? "opacity-100" : "opacity-0 z-0!"}
             `} style={{ zIndex: zIndex }}>
 

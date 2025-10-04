@@ -26,7 +26,7 @@ export default function Home() {
 
           <Shortcut url={"/gov-parana"} imageSrc={"/shortcuts/shortcut-2.png"} />
 
-          <Shortcut url={"/escola-cidade"} imageSrc={"/shortcuts/shortcut-3.png"} />
+          <Shortcut url={"/szymanski"} imageSrc={"/shortcuts/shortcut-3.png"} />
 
           <Shortcut url={"/gremio"} imageSrc={"/shortcuts/shortcut-4.png"} />
 
@@ -40,22 +40,22 @@ export default function Home() {
 
             <Col className="gutter-row" xs={24} sm={12} md={8}>
               <Card
+                className="h-full"
                 loading={false}
+                cover={
+                  <Image src="/posts/aranha-robo.jpg" width={1000} height={5} style={{ height: "50vh", objectFit: "cover" }} alt="Aranha Robô Skoola"  />
+                }
                 actions={[
                   <HeartOutlined key="like" />,
                   <CommentOutlined key="comment" />,
                 ]}
               >
                 <Card.Meta
-                  avatar={<Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=1" />}
-                  title="Postagem"
+                  avatar={<Avatar src="/shortcuts/shortcut-3.png" />}
+                  title="Aranha Robô"
                   description={
                     <p>
-                      Description Est sint commodo ad elit irure Lorem laboris. Nisi
-                      eiusmod Lorem sit excepteur dolor amet adipisicing culpa voluptate
-                      enim nisi. Lorem incididunt velit commodo ullamco proident in sint
-                      cupidatat. Consequat reprehenderit commodo cupidatat amet enim
-                      pariatur ipsum sint.
+                      Os alunos do 3ºCDS recentemente fizeram um trabalho incrível para a feira de profissões, a Aranha Robô, segue uma imagem de como ficou o resultado final.
                     </p>
                   }
                 />
@@ -64,119 +64,23 @@ export default function Home() {
 
             <Col className="gutter-row" xs={24} sm={12} md={8}>
               <Card
+              className="h-full"
                 loading={false}
+                cover={
+                  <Image src="/posts/pista.jpg" width={1000} height={100} alt="Pista de Corrida Skoola" style={{ height: "50vh", objectFit: "cover" }} />
+                }
                 actions={[
                   <HeartOutlined key="like" />,
                   <CommentOutlined key="comment" />,
                 ]}
               >
                 <Card.Meta
-                  avatar={<Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=1" />}
-                  title="Postagem"
+                  avatar={<Avatar src="/shortcuts/shortcut-3.png" />}
+                  title="Pista de Corrida"
                   description={
-                    <p>
-                      Description Est sint commodo ad elit irure Lorem laboris. Nisi
-                      eiusmod Lorem sit excepteur dolor amet adipisicing culpa voluptate
-                      enim nisi. Lorem incididunt velit commodo ullamco proident in sint
-                      cupidatat. Consequat reprehenderit commodo cupidatat amet enim
-                      pariatur ipsum sint.
-                    </p>
-                  }
-                />
-              </Card>
-            </Col>
-
-            <Col className="gutter-row" xs={24} sm={12} md={8}>
-              <Card
-                loading={false}
-                actions={[
-                  <HeartOutlined key="like" />,
-                  <CommentOutlined key="comment" />,
-                ]}
-              >
-                <Card.Meta
-                  avatar={<Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=1" />}
-                  title="Postagem"
-                  description={
-                    <p>
-                      Description Est sint commodo ad elit irure Lorem laboris. Nisi
-                      eiusmod Lorem sit excepteur dolor amet adipisicing culpa voluptate
-                      enim nisi. Lorem incididunt velit commodo ullamco proident in sint
-                      cupidatat. Consequat reprehenderit commodo cupidatat amet enim
-                      pariatur ipsum sint.
-                    </p>
-                  }
-                />
-              </Card>
-            </Col>
-
-            <Col className="gutter-row" xs={24} sm={12} md={8}>
-              <Card
-                loading={false}
-                actions={[
-                  <HeartOutlined key="like" />,
-                  <CommentOutlined key="comment" />,
-                ]}
-              >
-                <Card.Meta
-                  avatar={<Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=1" />}
-                  title="Postagem"
-                  description={
-                    <p>
-                      Description Est sint commodo ad elit irure Lorem laboris. Nisi
-                      eiusmod Lorem sit excepteur dolor amet adipisicing culpa voluptate
-                      enim nisi. Lorem incididunt velit commodo ullamco proident in sint
-                      cupidatat. Consequat reprehenderit commodo cupidatat amet enim
-                      pariatur ipsum sint.
-                    </p>
-                  }
-                />
-              </Card>
-            </Col>
-
-            <Col className="gutter-row" xs={24} sm={12} md={8}>
-              <Card
-                loading={false}
-                actions={[
-                  <HeartOutlined key="like" />,
-                  <CommentOutlined key="comment" />,
-                ]}
-              >
-                <Card.Meta
-                  avatar={<Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=1" />}
-                  title="Postagem"
-                  description={
-                    <p>
-                      Description Est sint commodo ad elit irure Lorem laboris. Nisi
-                      eiusmod Lorem sit excepteur dolor amet adipisicing culpa voluptate
-                      enim nisi. Lorem incididunt velit commodo ullamco proident in sint
-                      cupidatat. Consequat reprehenderit commodo cupidatat amet enim
-                      pariatur ipsum sint.
-                    </p>
-                  }
-                />
-              </Card>
-            </Col>
-
-            <Col className="gutter-row" xs={24} sm={12} md={8}>
-              <Card
-                loading={false}
-                actions={[
-                  <HeartOutlined key="like" />,
-                  <CommentOutlined key="comment" />,
-                ]}
-              >
-                <Card.Meta
-                  avatar={<Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=1" />}
-                  title="Postagem"
-                  description={
-                    <p>
-                      Description Est sint commodo ad elit irure Lorem laboris. Nisi
-                      eiusmod Lorem sit excepteur dolor amet adipisicing culpa voluptate
-                      enim nisi. Lorem incididunt velit commodo ullamco proident in sint
-                      cupidatat. Consequat reprehenderit commodo cupidatat amet enim
-                      pariatur ipsum sint.
-                    </p>
+                      <p>
+                        No ano passado, o 3ºCDS fez uma pista de corrida com carrinhos de LED. Até o prefeito da cidade jogou e curtiu o jogo! O jogo foi feito com arduino e peças parecidas com lego.
+                      </p>
                   }
                 />
               </Card>

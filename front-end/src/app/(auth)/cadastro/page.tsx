@@ -39,7 +39,7 @@ export default function Register() {
             setSuccessOnRegister(true);
 
         } catch (err) {
-            message.open({
+            messageApi.open({
                 type: "error",
                 content: "Erro ao se cadastrar, tente novamente mais tarde.",
             })
@@ -106,6 +106,8 @@ export default function Register() {
             <Button type="primary" htmlType="submit" loading={loading}>
                 Cadastrar-me
             </Button>
+
+            <p>Já tem uma conta? <Link href="/login">Faça o Login Aqui</Link></p>
 
         </Form>
     </div>
