@@ -147,13 +147,15 @@ const courses = {
 };
 
 interface PageProps {
-    params: {
+    params: Promise<{
         slug: string;
-    };
+    }>;
 }
 
-export default function CoursePage({ params }: PageProps) {
-    const course = courses[params.slug as keyof typeof courses];
+export default async function CoursePage({ params }: PageProps) {
+    const { slug} = await params;
+
+    const course = courses[slug as keyof typeof courses];
 
     if (!course) {
         notFound();
