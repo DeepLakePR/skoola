@@ -1,10 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { Avatar, Button, Card, Flex, Input, Menu, Modal } from "antd";
 import {
     HomeOutlined,
-    MessageOutlined,
     UserOutlined,
     PlusOutlined,
     SearchOutlined,
@@ -53,12 +51,6 @@ export default function Header() {
                             key: "perfil",
                             style: { borderRadius: 6 },
                             icon: <UserOutlined />,
-                        },
-                        {
-                            label: (<Link href="/mensagens">Mensagens</Link>),
-                            key: "mensagens",
-                            style: { borderRadius: 6 },
-                            icon: <MessageOutlined />,
                         },
                         {
                             label: (<Link href="/mais">Mais</Link>),
