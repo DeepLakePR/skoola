@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 
 const courses = {
     'ensino-medio': {
+        slug: "ensino-medio",
         id: 1,
         title: 'Ensino Médio Regular',
         description: 'Formação completa para o ensino médio tradicional',
@@ -37,6 +38,7 @@ const courses = {
         }
     },
     'administracao': {
+        slug: "administracao",
         id: 2,
         title: 'Administração',
         description: 'Curso técnico em administração empresarial',
@@ -73,6 +75,7 @@ const courses = {
         }
     },
     'docentes': {
+        slug: "docentes",
         id: 3,
         title: 'Formação de Docentes',
         description: 'Formação para futuros educadores',
@@ -107,6 +110,7 @@ const courses = {
         }
     },
     'ads': {
+        slug: "ads",
         id: 4,
         title: 'Análise e Desenvolvimento de Sistemas',
         description: 'Curso técnico em tecnologia e programação',
@@ -143,8 +147,8 @@ const courses = {
 };
 
 interface PageProps {
-    params?: {
-        slug?: string;
+    params: {
+        slug: string;
     };
 }
 
