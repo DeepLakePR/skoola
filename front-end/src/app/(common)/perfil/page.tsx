@@ -2,23 +2,33 @@
 
 import { updateUserName } from "@/api/userAPI";
 import Background from "@/components/Background";
+import CourseCard from "@/components/CourseCard";
 import { EditOutlined } from "@ant-design/icons";
-import { Button, Input, message, Modal } from "antd";
+import { Button, Divider, Input, message, Modal } from "antd";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-interface UserData{
+interface UserData {
     token: string,
     id: string,
     name: string,
     email: string
 }
 
+interface CourseData {
+    id: number,
+    title: string,
+    description: string,
+    link: string,
+    gradient: string,
+    textColor: string
+}
+
 export default function Profile() {
 
     const [messageApi, contextHolder] = message.useMessage();
-    
+
     const router = useRouter();
 
     const [editUserModal, setEditUserModal] = useState<boolean>(false);
@@ -28,39 +38,42 @@ export default function Profile() {
         name: "",
         email: ""
     });
+    const [subscribedCourses, setSubscribedCourses] = useState<CourseData[]>([]);
 
     useEffect(() => {
-        if(typeof window !== "undefined"){
+        if (typeof window !== "undefined") {
             const user = JSON.parse(localStorage.getItem("user") ?? "{}");
+            const courses = JSON.parse(localStorage.getItem("courses") ?? "[]");
 
             if (!user.token)
                 return router.push("/login");
 
             setUserData(user);
+            setSubscribedCourses(courses);
 
         }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     async function finishUserEdit() {
 
-        try{
+        try {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const res: any = await updateUserName(userData.id, userData.name);
 
-            const newUser = {...userData, name: res.updateName}
+            const newUser = { ...userData, name: res.updateName }
             localStorage.setItem(
                 "user",
                 JSON.stringify(newUser)
             )
             messageApi.success("Nome atualizado com sucesso!")
 
-        }catch(err){
+        } catch (err) {
             messageApi.error("Erro ao atualizar cadastro, tente novamente mais tarde.");
             console.error(err);
 
-        }finally{
+        } finally {
             setEditUserModal(false);
 
         }
@@ -80,13 +93,13 @@ export default function Profile() {
                 xs: '90%',
                 sm: '80%',
                 md: '70%',
-                lg: '60%',  
+                lg: '60%',
                 xl: '50%',
                 xxl: '40%',
             }}
             cancelText="Cancelar"
             okText="Salvar">
-            <Input placeholder="Nome" value={userData.name} onChange={(value) => setUserData({...userData, name: value.target.value})} />
+            <Input placeholder="Nome" value={userData.name} onChange={(value) => setUserData({ ...userData, name: value.target.value })} />
         </Modal>
 
         <Background />
@@ -104,6 +117,14 @@ export default function Profile() {
                 <p className="font-bold">{userData.name}</p>
 
                 <Button icon={<EditOutlined />} type="primary" onClick={() => setEditUserModal(true)}></Button>
+            </div>
+
+            <Divider className="text-white! text-xl!">Suas Inscrições</Divider>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {subscribedCourses.map((course) => (
+                    <CourseCard key={course.id} course={course} hideSubscriptionButton={true} />
+                ))}
             </div>
         </div>
 
