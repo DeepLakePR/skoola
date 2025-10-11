@@ -143,8 +143,8 @@ const courses = {
 };
 
 interface PageProps {
-    params: {
-        slug: string;
+    params?: {
+        slug?: string;
     };
 }
 
