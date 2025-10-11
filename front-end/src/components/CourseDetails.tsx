@@ -44,7 +44,7 @@ const CourseDetails = ({ course }: CourseDetailsProps) => {
                         onClick={() => router.back()}
                         className="text-gray-600 hover:text-gray-800 mb-4 pl-0"
                     >
-                        Voltar para Cursos
+                        Voltar
                     </Button>
                 </div>
 

@@ -51,7 +51,7 @@ const CourseCard = ({ course, hideSubscriptionButton }: CourseCardProps) => {
 
         <Card
             key={course.id}
-            className={`h-full shadow-md hover:shadow-xl transition-all duration-300 border-0 rounded-xl overflow-hidden hover:transform hover:-translate-y-2 ${course.gradient} ${hideSubscriptionButton ? "border-[#007ab3]!" : ""}`}
+            className={`h-full shadow-md text-center hover:shadow-xl transition-all duration-300 border-0 rounded-xl overflow-hidden hover:transform hover:-translate-y-2 ${course.gradient} ${hideSubscriptionButton ? "border-[#007ab3]!" : ""}`}
             styles={{
                 body: {
                     padding: '24px',
