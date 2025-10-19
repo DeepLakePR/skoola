@@ -16,7 +16,7 @@ export class UserRepository {
         const created = new this.userModel(user);
         const saved = await created.save();
 
-        return new User(saved.id, saved.name, saved.email, saved.password);
+        return new User(saved.id, saved.name, saved.email, saved.password, saved.course);
     }
 
     async findByEmail(email: string): Promise<User | null> {

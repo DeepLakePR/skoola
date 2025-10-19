@@ -1,8 +1,11 @@
 'use client';
 
-import { Card, Button, Tag, List } from 'antd';
-import { ArrowLeftOutlined, CheckOutlined, EnvironmentOutlined } from '@ant-design/icons';
+import { Card, Button, Tag, List, Modal, Row, Col } from 'antd';
+import { ArrowLeftOutlined, CheckOutlined, EnvironmentOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+import { useState } from 'react';
+import Link from 'next/link';
 
 interface CourseDetailsProps {
     course: {
@@ -21,7 +24,17 @@ interface CourseDetailsProps {
 }
 
 const CourseDetails = ({ course }: CourseDetailsProps) => {
+
     const router = useRouter();
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+    const handleModalCancel = () => {
+        setIsModalOpen(false);
+    };
 
     const courseData = {
         id: course.id,
@@ -32,6 +45,30 @@ const CourseDetails = ({ course }: CourseDetailsProps) => {
         market: course.details.market,
         benefits: course.details.benefits
     };
+
+    const schools = [
+        {
+            slug: 'julio-szymanski',
+            name: 'Szymanski',
+            address: 'R. São Vicente de Paulo, 76 - Centro, Araucária - PR, 83702-050',
+            phone: '(41) 3642-4089',
+            imageUrl: '/schools/szymanski.jpg',
+        },
+        {
+            slug: 'helena-wysocki',
+            name: 'Helena Wysocki',
+            address: 'R. Maranhão, 2673 - Costeira, Araucária - PR, 83709-225',
+            phone: '(41) 3607-2899',
+            imageUrl: '/schools/helena.jpg',
+        },
+        {
+            slug: 'dias-rocha',
+            name: 'Dias Da Rocha',
+            address: 'R. Maj. Sez. P. de Souza, 723 - Centro, Araucária - PR, 83702-270',
+            phone: '(41) 3642-1433',
+            imageUrl: '/schools/rocha.jpg',
+        },
+    ];
 
     return (
         <section className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4 sm:px-6 lg:px-8">
@@ -74,7 +111,7 @@ const CourseDetails = ({ course }: CourseDetailsProps) => {
                                         className="w-full bg-white text-gray-900 hover:bg-gray-100 border-0 font-medium h-10 shadow-md"
                                         size="large"
                                     >
-                                        Clique aqui para se inscrever
+                                        Inscreva-se
                                     </Button>
                                 </div>
                             </div>
@@ -99,7 +136,7 @@ const CourseDetails = ({ course }: CourseDetailsProps) => {
                                 </div>
 
                                 {/* Botão de Localização - Versão Desktop (no conteúdo principal) */}
-                                <div className="flex justify-center mb-8">
+                                {/* <div className="flex justify-center mb-8">
                                     <Button
                                         type="primary"
                                         icon={<EnvironmentOutlined />}
@@ -108,7 +145,7 @@ const CourseDetails = ({ course }: CourseDetailsProps) => {
                                     >
                                         Escolas que Ofertam esse Curso
                                     </Button>
-                                </div>
+                                </div> */}
 
                                 {/* Sobre o Curso */}
                                 <section className="mb-8">
@@ -196,6 +233,7 @@ const CourseDetails = ({ course }: CourseDetailsProps) => {
                                         href="#location"
                                         className="border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold h-12 px-6 text-lg ml-4"
                                         size="large"
+                                        onClick={showModal}
                                     >
                                         Escolas que Ofertam esse Curso
                                     </Button>
@@ -216,7 +254,58 @@ const CourseDetails = ({ course }: CourseDetailsProps) => {
                     </p>
                 </footer>
             </div>
-        </section>
+
+            <Modal
+                title="Escolas que ofertam esse Curso"
+                open={isModalOpen}
+                onCancel={handleModalCancel}
+                footer={null}
+                width={'75%'}
+            >
+                <Row gutter={[16, 16]} className="items-stretch">
+
+                    {schools.map((school) => (
+                        <Col key={school.slug} span={24} md={8} className="items-stretch">
+                            <Card
+                                hoverable
+                                cover={<Image src={school.imageUrl} width={500} height={100} alt={school.name}
+                                    className="object-cover w-full h-50"/>}
+                                className='h-full! self-stretch!'
+                                style={{ height: '100% !important' }} 
+                            >
+                                <h3 className="font-bold text-lg mb-2">{school.name}</h3>
+                                <p className="text-gray-600">{school.address}</p>
+                                <Link href={`tel:+55${school.phone}`} target="_blank" className="text-gray-600">{school.phone}</Link>
+                                <div className="flex justify-between mt-4">
+                                    <Button
+                                        icon={<EnvironmentOutlined />}
+                                        type="text"
+                                        onClick={() => {
+                                            // talvez abrir mapa ou rotear para alguma parte
+                                            window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(school.address)}`, '_blank');
+                                        }}
+                                    >
+                                        Localização
+                                    </Button>
+                                    <Button
+                                        icon={<InfoCircleOutlined />}
+                                        type="primary"
+                                        onClick={() => {
+                                            handleModalCancel();
+                                            router.push(`/escola/${school.slug}`);
+                                        }}
+                                    >
+                                        Informação
+                                    </Button>
+                                </div>
+                            </Card>
+                        </Col>
+                    ))}
+
+                </Row>
+            </Modal>
+
+        </section >
     );
 };
 

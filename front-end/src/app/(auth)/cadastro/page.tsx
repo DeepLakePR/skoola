@@ -3,7 +3,7 @@
 import { registerUser } from "@/api/userAPI";
 import Background from "@/components/Background";
 import Logo from "@/components/Logo";
-import { Button, Form, Input, message, Result } from "antd";
+import { Button, Form, Input, message, Result, Select } from "antd";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -11,7 +11,8 @@ interface FormValues {
     name: string,
     email: string,
     repeatEmail: string,
-    password: string
+    password: string,
+    course: string
 }
 
 export default function Register() {
@@ -35,7 +36,7 @@ export default function Register() {
         setLoading(true);
 
         try {
-            await registerUser(values.name, values.email, values.password);
+            await registerUser(values.name, values.email, values.password, values.course);
             setSuccessOnRegister(true);
 
         } catch (err) {
@@ -59,7 +60,7 @@ export default function Register() {
                 subTitle="Seu cadastro foi concluído com sucesso e você já pode acessar sua conta."
                 extra={[
                     <Button type="primary" key="profile">
-                        <Link href="/perfil">
+                        <Link href="/login">
                             Ir Para o Login
                         </Link>
                     </Button>
@@ -101,6 +102,19 @@ export default function Register() {
                     className="mb-2!">
                     <Input.Password placeholder="Senha" about="Coloque sua senha" />
                 </Form.Item>
+
+                <Form.Item name="course" rules={[{ required: true, message: "Selecione um curso de interesse" }]}
+                    className="mb-2!">
+                    <Select
+                        placeholder="Selecione um curso de interesse"
+                        options={[
+                            { value: 'analise-desenvolvimento-sistemas', label: 'Análise e Desenvolvimento de Sistemas' },
+                            { value: 'administracao', label: 'Administração' },
+                            { value: 'formacao-docentes', label: 'Formação de Docentes' },
+                        ]}
+                    />
+                </Form.Item>
+
             </div>
 
             <Button type="primary" htmlType="submit" loading={loading}>

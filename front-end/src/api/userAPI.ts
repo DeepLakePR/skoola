@@ -3,14 +3,16 @@ import { client } from "./client";
 export const registerUser = async (
     name: string, 
     email: string, 
-    password: string
+    password: string,
+    course: string
 ) => {
     const mutation = `
         mutation {
             register(
                 name: "${name}",
                 email: "${email}",
-                password: "${password}"
+                password: "${password}",
+                course: "${course}"
             )
         }
     `

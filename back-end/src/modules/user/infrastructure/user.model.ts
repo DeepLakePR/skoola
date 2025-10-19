@@ -12,6 +12,10 @@ export class UserModel extends Document {
 
     @Prop({ required: true })
     password: string;
+
+    @Prop({ required: true })
+    course: string
+
 }
 
 export const UserSchema = SchemaFactory.createForClass(UserModel);

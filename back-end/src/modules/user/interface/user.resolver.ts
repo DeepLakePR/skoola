@@ -23,8 +23,9 @@ export class UserResolver {
         @Args('name') name: string,
         @Args('email') email: string,
         @Args('password') password: string,
+        @Args('course') course: string
     ) {
-        const user = await this.createUser.execute(name, email, password);
+        const user = await this.createUser.execute(name, email, password, course);
         return `User ${user.email} created successfully`;
     }
 
