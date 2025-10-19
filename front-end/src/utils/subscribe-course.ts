@@ -3,11 +3,11 @@
 
 interface ICourse{
     id: number,
-    title: string,
-    description: string,
-    link: string,
-    gradient: string,
-    textColor: string
+    title?: string,
+    description?: string,
+    link?: string,
+    gradient?: string,
+    textColor?: string
 }
 
 export async function subscribe(course: ICourse) {
