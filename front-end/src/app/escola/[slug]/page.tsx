@@ -57,12 +57,14 @@ const schools: School[] = [
 ];
 
 type PageProps = {
-    params: { slug: string }
+    params: Promise<{
+        slug: string;
+    }>;
 }
 
-export default function SchoolPage({ params }: PageProps) {
+export default async function SchoolPage({ params }: PageProps) {
 
-    const slug = params.slug;
+    const { slug } = await params;
     const school = schools.find(s => s.slug === slug);
 
     if (!school) {
