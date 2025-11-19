@@ -4,6 +4,7 @@ import { loginUser } from "@/api/userAPI";
 import Background from "@/components/Background";
 import Logo from "@/components/Logo";
 import { IUser } from "@/interface/user.interface";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Button, Input, Form, message } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -47,7 +48,16 @@ export default function Login() {
 
         <Background />
 
-        <Form onFinish={handleLogin} className="p-4 bg-white rounded-3xl w-[85%] h-full flex flex-col items-center justify-center gap-3">
+        <Form onFinish={handleLogin} className="p-4 bg-white rounded-3xl w-[85%] h-full flex flex-col items-center justify-center gap-3 relative">
+
+            <Button
+                type="link"
+                icon={<ArrowLeftOutlined />}
+                href="/"
+                className="text-gray-600 hover:text-gray-800 mb-4 pl-0 absolute! top-5 left-5"
+            >
+                Home
+            </Button>
 
             <Logo imgWidth={200} imgHeight={200} className="mb-8" />
 

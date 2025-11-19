@@ -3,6 +3,7 @@
 import { registerUser } from "@/api/userAPI";
 import Background from "@/components/Background";
 import Logo from "@/components/Logo";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Button, Form, Input, message, Result, Select } from "antd";
 import Link from "next/link";
 import { useState } from "react";
@@ -75,7 +76,16 @@ export default function Register() {
 
         {contextHolder}
 
-        <Form onFinish={sendForm} className="p-4 bg-white rounded-3xl w-[85%] h-full flex flex-col items-center justify-center gap-3">
+        <Form onFinish={sendForm} className="p-4 bg-white rounded-3xl w-[85%] h-full flex flex-col items-center justify-center gap-3 relative">
+
+            <Button
+                type="link"
+                icon={<ArrowLeftOutlined />}
+                href="/"
+                className="text-gray-600 hover:text-gray-800 mb-4 pl-0 absolute! top-5 left-5"
+            >
+                Home
+            </Button>
 
             <Logo imgWidth={200} imgHeight={200} className="mb-8" />
 

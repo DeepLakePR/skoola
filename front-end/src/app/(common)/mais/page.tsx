@@ -31,14 +31,6 @@ export default function Page() {
                 </Col>
 
                 <Col className="gutter-row" xs={24} md={12}>
-                    <Link href="/suporte" title="Suporte" className="flex flex-col items-center justify-center text-2xl p-4 py-7 rounded-xl border-1 border-zinc-400 hover:bg-zinc-200! transition-all! ease-in-out! duration-250!">
-                        <RobotOutlined className="text-3xl!" />
-
-                        <p>Suporte</p>
-                    </Link>
-                </Col>
-
-                <Col className="gutter-row" xs={24} md={12}>
                     <Link href="/sobre" title="Quem Somos" className="flex flex-col items-center justify-center text-2xl p-4 py-7 rounded-xl border-1 border-zinc-400 hover:bg-zinc-200! transition-all! ease-in-out! duration-250!">
                         <InfoCircleOutlined className="text-3xl!" />
 
